@@ -23,6 +23,7 @@ import { CleaningServicesRounded } from '@mui/icons-material';
 import { BuildRounded } from '@mui/icons-material';
 import { PlumbingRounded } from '@mui/icons-material';
 import { ElectricBoltRounded } from '@mui/icons-material';
+import ForgetPassword from './src/component/Home/Registration/ForgetPage';
 
 const Sidebar = () => {
   const menuItems = [
@@ -152,6 +153,14 @@ function App() {
       element:<div>
       <Navbar/>
     <Repairing/>
+    <Footer/>
+    </div>
+    },
+    {
+      path: "/ForgetPassword",
+      element:<div>
+      <Navbar/>
+    <ForgetPassword/>
     <Footer/>
     </div>
     },

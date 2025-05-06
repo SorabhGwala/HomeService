@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate()
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -52,6 +55,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+            <p onClick={()=> navigate('/ForgetPassword')} className='bg-gradient-to-r from-indigo-500 via-purple-500 to-[#3494e6] bg-clip-text text-transparent'>Forgot Password ?</p>
 
             {/* Submit Button */}
             <button
@@ -60,6 +64,9 @@ const Login = () => {
             >
               Login
             </button>
+
+            <p className='text-stone-500'>Don't have an account?  <button onClick={()=> navigate('/Signup')} className='text-indigo-600 underline'>Sign up</button></p>
+       
           </form>
         </div>
 

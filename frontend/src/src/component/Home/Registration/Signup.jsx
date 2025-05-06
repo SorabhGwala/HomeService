@@ -1,6 +1,8 @@
 import { useRegisterUserMutation } from '@/feature/api/authApi';
 import { Loader2 } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 const Signup = () => {    
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -11,6 +13,8 @@ const Signup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const navigate = useNavigate()
+
   const handleClick = async (event) => {
     event.preventDefault();
     try {
@@ -20,6 +24,24 @@ const Signup = () => {
       console.error("Registration failed:", error);
     }
   };
+
+  useEffect(() => {
+    if (registerIsSuccess && registerData) {
+     
+      toast.success(registerData.message ||"Registration successful! ");
+    }
+
+    if(registerError){
+      toast.error(registerError.data.message || "Registration failed! Please try again.");
+    }
+
+    
+   
+  }
+  , [registerIsSuccess, registerData, registerError]);
+
+
+
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -93,6 +115,8 @@ const Signup = () => {
                 </>
               ) : "Signup"}
             </button>
+
+            <p className='text-stone-500'>Already have an acount ? <button onClick={()=> navigate('/login')} className='text-indigo-600 underline'>Signin</button></p>
           </form>
         </div>
 
