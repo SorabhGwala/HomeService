@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const ForgetPassword = () => {
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+   
+    navigate('/VerifyOTP')
+
+
     console.log('Reset link sent to:', email);
     // You can replace this with an actual API call to send reset link
   };
@@ -43,6 +48,7 @@ const ForgetPassword = () => {
 
             <button
               type="submit"
+             
               className="w-full py-3 mt-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-400 text-white font-semibold rounded-lg shadow-md transition-transform transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               Send Reset Link

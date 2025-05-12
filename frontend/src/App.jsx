@@ -24,6 +24,8 @@ import { BuildRounded } from '@mui/icons-material';
 import { PlumbingRounded } from '@mui/icons-material';
 import { ElectricBoltRounded } from '@mui/icons-material';
 import ForgetPassword from './src/component/Home/Registration/ForgetPage';
+import VerifyOtp from './src/component/Home/Registration/VerifyOtp';
+import UpdatePassword from './src/component/Home/Registration/UpdatePassword';
 
 const Sidebar = () => {
   const menuItems = [
@@ -161,6 +163,23 @@ function App() {
       element:<div>
       <Navbar/>
     <ForgetPassword/>
+    <Footer/>
+    </div>
+    },
+    {
+      path: "/VerifyOTP",
+      element:<div>
+      <Navbar/>
+    <VerifyOtp/>
+    <Footer/>
+    </div>
+    },
+   
+    {
+      path: "/UpdatePassword",
+      element:<div>
+      <Navbar/>
+    <UpdatePassword/>
     <Footer/>
     </div>
     },
