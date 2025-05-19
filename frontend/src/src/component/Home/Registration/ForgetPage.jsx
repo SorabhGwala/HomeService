@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
+// ✅ Use .env or fallback to localhost:8080
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+
 const ForgetPassword = () => {
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
-  const [step, setStep] = useState('email'); // email | otp
+  const [step, setStep] = useState('email'); // 'email' or 'otp'
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
@@ -15,13 +18,17 @@ const ForgetPassword = () => {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch('http://localhost:8080/api/send-otp', {
+      const res = await fetch(`${API_BASE}/send-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
 
-      if (!res.ok) throw new Error('Failed to send OTP');
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.message || 'Failed to send OTP');
+      }
+
       toast.success('OTP sent to your email');
       setStep('otp');
     } catch (error) {
@@ -37,7 +44,7 @@ const ForgetPassword = () => {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/verify-otp', {
+      const res = await fetch(`${API_BASE}/verify-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, otp }),
@@ -48,7 +55,7 @@ const ForgetPassword = () => {
 
       toast.success('OTP verified. Redirecting...');
       setTimeout(() => {
-        navigate('/reset-password'); // Or wherever you want to go after verification
+        navigate('/reset-password');
       }, 1500);
     } catch (error) {
       toast.error(error.message || 'OTP verification failed');
@@ -64,7 +71,11 @@ const ForgetPassword = () => {
         {/* Left Section */}
         <div className="md:w-1/2 bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-400 text-white flex flex-col items-center justify-center p-8">
           <h2 className="text-3xl font-semibold mb-4">Reset Your Password</h2>
-          <img src="" alt="Forgot Password" className="w-48" />
+          <img
+            src="/assets/forgot-password.svg"
+            alt="Forgot Password"
+            className="w-48"
+          />
         </div>
 
         {/* Right Section */}
@@ -73,7 +84,7 @@ const ForgetPassword = () => {
 
           <form onSubmit={step === 'email' ? handleSendOtp : handleVerifyOtp} className="space-y-5">
 
-            {/* Step 1: Email */}
+            {/* Step 1: Email Input */}
             {step === 'email' && (
               <div>
                 <input
