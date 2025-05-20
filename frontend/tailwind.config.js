@@ -14,11 +14,7 @@ export default {
 		  fadeInSlide: "fadeInSlide 0.6s ease-out forwards",
 		},
   
-		borderRadius: {
-		  lg: "var(--radius)",
-		  md: "calc(var(--radius) - 2px)",
-		  sm: "calc(var(--radius) - 4px)",
-		},
+	
   
 		colors: {
 		  background: "hsl(var(--background))",

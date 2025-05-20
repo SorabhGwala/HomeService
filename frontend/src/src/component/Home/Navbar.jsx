@@ -99,16 +99,18 @@ const Navbar = () => {
             <SearchInput />
             <Link
               to="/Login"
-              className="border-2 px-5 py-1 rounded-md bg-gradient-to-r from-[#f5f7fa] via-[#eaeef5] to-[#c3cfe2] hover:shadow-xl "
+              className="border-2  px-5 py-1 rounded-2xl border-stone-800 hover:shadow-xl "
             >
               Login
             </Link>
-            <Link
-              to="/Signup"
-              className="border-2 px-5 py-1 rounded-lg bg-gradient-to-r from-[#f5f7fa] via-[#eaeef5] to-[#c3cfe2] hover:shadow-xl hover:shadow-[#3494e6]"
-            >
-              Signup
-            </Link>
+   <Link
+  to="/Signup"
+  className="px-5 py-2 text-white bg-purple-600 rounded-none md:rounded-3xl lg:rounded-sm hover:shadow-xl"
+>
+  Signup
+</Link>
+
+
           </div>
 
           {/* Mobile Menu Button */}
