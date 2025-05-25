@@ -19,6 +19,7 @@ const About = React.lazy(() => import('./src/component/Home/About'));
 const PartnerNav = React.lazy(() => import('./src/component/Home/Registration/PartnerNav'));
 const MenuBar = React.lazy(() => import('./src/component/Home/MenuBar'));
 const ForgetPassword = React.lazy(() => import('./src/component/Home/Registration/ForgetPage'));
+const ResetPassword = React.lazy(() => import('./src/component/Home/Registration/ResetPassword'));
 const VerifyOtp = React.lazy(() => import('./src/component/Home/Registration/VerifyOtp'));
 const UpdatePassword = React.lazy(() => import('./src/component/Home/Registration/UpdatePassword'));
 const LoadingAnimation = React.lazy(() => import('./src/component/Home/LoadingAnimation'));
@@ -120,6 +121,10 @@ function App() {
     {
       path: "/ForgetPassword",
       element: <><Navbar /><ForgetPassword /><Footer /></>,
+    },
+    {
+      path: "/reset-password",
+      element: <><Navbar /><ResetPassword /><Footer /></>,
     },
     {
       path: "/VerifyOTP",

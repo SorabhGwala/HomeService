@@ -49,4 +49,19 @@ router.post("/verify-otp", async (req, res) => {
   }
 });
 
+
+router.put('/reset-password', async (req, res) => {
+  const { email, newPassword } = req.body;
+  if (!email || !newPassword) return res.status(400).json({ success: false, message: "Email and new password are required" });
+  try {
+    // Here you would typically update the password in your database
+    // For demonstration, we'll just log it
+    console.log(`Password for ${email} has been reset to: ${newPassword}`);
+    res.status(200).json({ success: true, message: "Password reset successfully" });
+  } catch (error) {
+    console.error("Error resetting password:", error);
+    res.status(500).json({ success: false, message: "Password reset failed" });
+  }
+});
+
 export default router;

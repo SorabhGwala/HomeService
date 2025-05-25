@@ -15,7 +15,7 @@ export const sendOtp = async ({ email, eventTitle, location, otp }) => {
     from: process.env.EMAIL_USER,
     to: email,
     subject: `Your ticket for ${eventTitle}`,
-    html: `<h2>OTP for ticket registration</h2><p style="font-size: 20px; font-weight: bold;">${otp}</p><p>At ${location}</p>.`,
+    html: `<h2>OTP for forget password</h2><p style="font-size: 20px; font-weight: bold;">${otp}</p><p></p>.`,
   };  
 
   await transporter.sendMail(mailOptions);
@@ -36,7 +36,7 @@ export const sendEventRegistration = async ({ email, eventTitle, location }) => 
     from: process.env.EMAIL_USER,
     to: email,
     subject: `Your ticket for ${eventTitle}`,
-    html: `<h2>Registration successful.</h2><p style="font-size: 20px; font-weight: bold;">${eventTitle}</p><p>At ${location}</p>.`,
+    html: `<h2> successful.</h2><p style="font-size: 20px; font-weight: bold;">${eventTitle}</p><p>At ${location}</p>.`,
   };
 
   await transporter.sendMail(mailOptions);
