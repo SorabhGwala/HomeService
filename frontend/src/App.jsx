@@ -31,6 +31,7 @@ import {
   PlumbingRounded,
   ElectricBoltRounded,
 } from '@mui/icons-material';
+import RepairServices from './src/component/Service/NewRepairing';
 
 const Sidebar = () => {
   const menuItems = [
@@ -141,6 +142,7 @@ function App() {
       <Suspense fallback={<LoadingAnimation />}> {/* Use the animated loader */}
         <RouterProvider router={router} />
         <Sidebar />
+     <RepairServices />
       </Suspense>
     </div>
   );
