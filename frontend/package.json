@@ -18,6 +18,8 @@
     "@reduxjs/toolkit": "^2.6.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "flowise-embed-react": "^3.0.3",
+    "gsap": "^3.13.0",
     "joi": "^17.13.3",
     "locomotive-scroll": "^5.0.0-beta.21",
     "lucide-react": "^0.484.0",

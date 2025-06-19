@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import LocomotiveScroll from 'locomotive-scroll';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+
 // Lazy load components
 const Navbar = React.lazy(() => import('./src/component/Home/Navbar'));
 const HomeSection = React.lazy(() => import('./src/component/Home/HomSection'));
@@ -32,6 +33,9 @@ import {
   ElectricBoltRounded,
 } from '@mui/icons-material';
 import RepairServices from './src/component/Service/NewRepairing';
+import { BubbleChat } from 'flowise-embed-react';
+import CreateFarm from './src/component/CreateFarm';
+import Blog from './src/component/Blog';
 
 const Sidebar = () => {
   const menuItems = [
@@ -142,7 +146,25 @@ function App() {
       <Suspense fallback={<LoadingAnimation />}> {/* Use the animated loader */}
         <RouterProvider router={router} />
         <Sidebar />
-     <RepairServices />
+           <BubbleChat
+  chatflowid="YOUR_CHATFLOW_ID"
+  apiHost="http://localhost:3000"
+  theme={{
+    button: {
+      backgroundColor: "#2E7D32",
+      iconColor: "#fff",
+    },
+    chatWindow: {
+      backgroundColor: "#fff",
+      botMessage: { backgroundColor: "#F1F1F1" },
+    },
+  }}
+/>
+
+     {/* <RepairServices /> */}
+     <farm/>
+     <CreateFarm/>
+     <Blog/>
       </Suspense>
     </div>
   );
