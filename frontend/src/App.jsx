@@ -36,6 +36,7 @@ import RepairServices from './src/component/Service/NewRepairing';
 import { BubbleChat } from 'flowise-embed-react';
 import CreateFarm from './src/component/CreateFarm';
 import Blog from './src/component/Blog';
+import ProductCard from './src/component/ProductCard';
 
 const Sidebar = () => {
   const menuItems = [
@@ -162,9 +163,11 @@ function App() {
 />
 
      {/* <RepairServices /> */}
-     <farm/>
-     <CreateFarm/>
-     <Blog/>
+     {/* <farm/> */}
+     {/* <CreateFarm/>
+     <Blog/> */}
+     <ProductCard />
+
       </Suspense>
     </div>
   );
